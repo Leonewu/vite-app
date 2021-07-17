@@ -1,0 +1,5 @@
+.sandwiches {
+  & .name {
+    color: red;
+  }
+}
