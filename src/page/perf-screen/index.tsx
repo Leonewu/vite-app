@@ -165,14 +165,7 @@ export default () => {
   }, [image_url])
 
   return (
-    <div
-      className={styles.preview}
-      style={style}
-      ref={ref}
-      onClick={() => {
-        celebrationRef.current.show(count)
-      }}
-    >
+    <div className={styles.preview} style={style} ref={ref}>
       <Celebration ref={celebrationRef} />
       <div
         className={`${styles.fullScreen} ${!isStop && styles.show}`}
@@ -180,7 +173,12 @@ export default () => {
       >
         {isFullscreen ? <CancelFullscreenIcon /> : <FullscreenIcon />}
       </div>
-      <section className={styles.left}>
+      <section
+        className={styles.left}
+        onClick={() => {
+          celebrationRef.current.show(count)
+        }}
+      >
         <Province
           bg={image_url.province_order_image || defaultBg}
           autoplay={autoplay}
