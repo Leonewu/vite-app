@@ -23,6 +23,12 @@ module.exports = {
     'space-before-function-paren': ['off'],
     'comma-dangle': ['off'],
     'no-use-before-define': ['off'],
-    'no-unused-vars': ['off']
+    'no-unused-vars': ['off'],
+    'camelcase': ['off'],
+    "react/display-name": ['off'],
+    "react/prop-types": ['off'],
+    "indent": ["off"],
+    "no-extra-parens": ["off"],
+    "no-tabs": ["off"]
   }
 }

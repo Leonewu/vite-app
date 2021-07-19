@@ -97,6 +97,17 @@
         ```
 
         因为我们没有使用 less，所以就引入 style/css.js
+8. svg 文件的引入
+    1. `npm i vite-plugin-svgr -D`
+    2. 添加类型到 vite-env.d.ts
+
+        ```js
+        declare module '*.svg' {
+            export const ReactComponent: React.FunctionComponent<React.SVGAttributes<SVGElement>>
+        }
+        ```
+
+    3. 代码内使用 `import { ReactComponent as Icon } from './icon.svg'`
 
 ### 打包优化和部署
 

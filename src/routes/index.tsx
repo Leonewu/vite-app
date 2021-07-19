@@ -2,8 +2,9 @@ import React from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import loadable from '@loadable/component'
 
-const Sandwiches = loadable(() => import('../page/Sandwiches'))
-const Tacos = loadable(() => import('../page/Tacos'))
+const Sandwiches = loadable(() => import('@/page/Sandwiches'))
+const Tacos = loadable(() => import('@/page/Tacos'))
+const perfScreen = loadable(() => import('@/page/perf-screen'))
 const routes = [
   {
     path: '/sandwiches',
@@ -12,6 +13,10 @@ const routes = [
   {
     path: '/tacos',
     component: Tacos,
+  },
+  {
+    path: '/perf-screen',
+    component: perfScreen,
   },
 ]
 
