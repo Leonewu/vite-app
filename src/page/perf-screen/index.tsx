@@ -13,6 +13,7 @@ import { Province, Station, Consultant } from './sections/table'
 import Celebration from './sections/celebration'
 import ScrollList from '@/components/ScrollList'
 import Countdown from '@/components/Countdown'
+import Doc from './sections/doc'
 
 function format(time: number = 0) {
   const now = new Date().getTime() / 1000
@@ -166,6 +167,7 @@ export default () => {
 
   return (
     <div className={styles.preview} style={style} ref={ref}>
+      <Doc />
       <Celebration ref={celebrationRef} />
       <div
         className={`${styles.fullScreen} ${!isStop && styles.show}`}

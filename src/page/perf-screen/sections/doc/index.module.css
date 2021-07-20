@@ -1,0 +1,40 @@
+.icon {
+  position: absolute;
+  top: 0;
+  left: -36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: #fff;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.12);
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+.show {
+  left: 0;
+}
+
+.notify {
+  max-height: 800px;
+  overflow-y: auto !important;
+  /* &::-webkit-scrollbar {
+    width: 20px;
+  } */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: #b1b0b0;
+  }
+}
