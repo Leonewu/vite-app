@@ -1,5 +1,5 @@
 import React from 'react'
 
-export default function Sandwiches() {
-  return <h1>Tacos</h1>
+export default function Sandwiches(props: React.PropsWithChildren<{}>) {
+  return <h1>Tacos{props.children}</h1>
 }

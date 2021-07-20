@@ -1,0 +1,14 @@
+.layout {
+  min-width: 100vw;
+  min-height: 100vh !important;
+  background: rgba(255, 255, 255, 0.3);
+}
+.sider {
+  width: 200px !important;
+  background: #fff !important;
+}
+
+.content {
+  margin: 0;
+  background: #fff;
+}
