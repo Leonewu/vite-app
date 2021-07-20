@@ -7,6 +7,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@loadable/component": "^5.15.0",
     "ahooks": "^2.10.8",
     "antd": "^4.16.7",
@@ -24,6 +25,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.14.5",
     "@types/loadable__component": "^5.13.4",
     "@types/node": "^16.3.3",
     "@types/react": "^17.0.0",
@@ -46,6 +48,7 @@
     "prettier": "^2.3.2",
     "typescript": "^4.3.2",
     "vite": "^2.4.2",
+    "vite-plugin-markdown": "^2.0.2",
     "vite-plugin-style-import": "^1.0.1",
     "vite-plugin-svgr": "^0.3.0"
   }

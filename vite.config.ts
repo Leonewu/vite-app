@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import styleImport from 'vite-plugin-style-import'
 import svgr from 'vite-plugin-svgr'
+import md, { Mode } from 'vite-plugin-markdown'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -24,6 +25,9 @@ export default defineConfig({
         },
       ]
     }),
-    svgr()
+    svgr(),
+    md({
+      mode: [Mode.REACT]
+    })
   ],
 })
