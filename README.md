@@ -1,29 +1,28 @@
 # 项目
 
-背景是想把自己写过的 vue，react 组件放到一个站点一起展示
-
-1. 试验 webpack module federation
-2. 主应用使用 react，子应用 vue3.x 和 react
-    1. 如果 rollup 支持 mf 就用 vite
-3. 尝试 tailwind
-4. 部署到服务器
+背景是想把自己写过的 vue，react 组件放到一个站点一起展示。  
+初步考虑的技术栈是 vite，但是 vite 不支持 MF。所以目前只是尝试使用 vite 搭建新项目，当做了解 vite。
 
 ## 预研
 
-1. 使用 vite 搭建 react 和 vue 应用，在此基础上看能否结合到 mf
-2. 如果不对第三方 ui 库进行主题定制，就不使用 css 预处理器，用 css 变量和 postcss-nesting 代替，另外可以考虑使用 tailwind
+1. 使用 vite 搭建 react 和 vue 应用，在此基础上看能否结合到 mf （不能，因为 vite 是 esModule，而 mf 的基础是 es5）
+2. 如果不对第三方 ui 库进行主题定制，可以不使用 css 预处理器，用 css 变量和 postcss-nesting 代替，另外也可以考虑使用 tailwind
 3. postcss nesting autoprefixer browserlist
 4. 需要自己定义 lint，eslint，stylelint，prettier
 5. commit hooks
 6. 测试
+7. 配合 vercel 或者 jenkins 部署
 
 ## 搭建流程
 
-### 开发
+以下为 vite + react + ts 的搭建步骤
 
-1. `yarn create vite`，模板下载完成之后，`npm run dev`，如果有 esbuild 相关报错，手动执行 `node node_modules/esbuild/install.js`
-2. `npm i postcss-nesting -D`
-    1. 添加 postcss.config.js
+### 基本
+
+1. `yarn create vite`，模板下载完成之后，执行 `npm run dev`，如有 esbuild 相关报错，手动执行 `node node_modules/esbuild/install.js`
+2. 安装 postcss-nesting，支持 css 的嵌套语法
+    1. `npm i postcss-nesting -D`
+    2. 添加 postcss.config.js
 
         ```js
         module.exports = {
@@ -33,17 +32,26 @@
         }
         ```
 
-    2. 装完之后，尝试使用嵌套语法，vscode 会报红，安装插件 `postCSS Language Support` 解决
-3. 添加 autoprefixer `npm i autoprefixer -D`，并引入
+    3. 装完之后，尝试使用嵌套语法，但此时 vscode可能 会报红，需安装插件 `postCSS Language Support`
+3. 添加 autoprefixer 配置
+    1. `npm i autoprefixer -D`
+    2. 引入
 
-    ```js
-    module.exports = {
-        plugins: [
-            require('postcss-nesting'),
-            require('autoprefixer')
-        ]
-    }
-    ```
+        ```js
+        module.exports = {
+            plugins: [
+                require('postcss-nesting'),
+                require('autoprefixer')
+            ]
+        }
+        ```
+
+    3. 配置 .browserlistrc
+
+        ```js
+        last 1 version
+        > 1%
+        ```
 
 4. eslint
     1. `npm i eslint -D`
@@ -75,7 +83,7 @@
         }
         ```
 
-    另外，由于我们用的是 husky@v7，不再支持 package.json 中定义 hooks
+    另外，由于我们用的是 husky@v7，不再支持 package.json 中定义 hooks，所以跟旧版本的配置不太一样
 7. 安装基础依赖
     1. `npm i react-router-dom antd`, `npm i @types/react-router-dom -D`
     2. 安装动态路由相关依赖 `npm i @loadable/component`, `npm i @types/loadable__component -D`
@@ -109,6 +117,13 @@
 
     3. 代码内使用 `import { ReactComponent as Icon } from './icon.svg'`
 
+### 业务相关
+
+1. layout，路由封装
+2. 设置代理
+3. 登录鉴权
+4. jenkins
+
 ### 打包优化和部署
 
 ## vite
@@ -128,3 +143,4 @@
 
 1. 目前尚不清楚 vite 和 rollup 的结合程度，会不会有某些共有的配置项，如果两者冲突了，会不会有坑？
 2. 对 rollup 不熟。
+3. vite 有必要支持包的合并吗？如果首屏请求过多，有什么优化手段？
