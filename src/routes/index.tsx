@@ -1,45 +1,35 @@
 import React from 'react'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import loadable from '@loadable/component'
+import { routes } from './routes'
+import type { RouteType } from './routes'
+import { Route, Switch } from 'react-router-dom'
 
-const Sandwiches = loadable(() => import('@/page/Sandwiches'))
-const Tacos = loadable(() => import('@/page/Tacos'))
-const perfScreen = loadable(() => import('@/page/perf-screen'))
-const routes = [
-  {
-    path: '/sandwiches',
-    component: Sandwiches,
-  },
-  {
-    path: '/tacos',
-    component: Tacos,
-  },
-  {
-    path: '/perf-screen',
-    component: perfScreen,
-  },
-]
-
-function RouteWithSubRoutes(route: any) {
+function renderRoute(route: RouteType) {
+  const fullpath = route._parentPath
+    ? `${route._parentPath}${route.path}`
+    : route.path
   return (
     <Route
-      path={route.path}
-      render={(props: any) => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
+      exact={!(route.children!?.length > 0)}
+      path={fullpath}
+      key={fullpath || ''}
+      render={(props) => {
+        const Component = route.component || React.Fragment
+        if (route.children?.length) {
+          const children = route.children.map((child) => {
+            return renderRoute({ ...child, _parentPath: fullpath })
+          })
+          return (
+            <Component {...props}>
+              <Switch>{children}</Switch>
+            </Component>
+          )
+        }
+        return <Component {...props} />
+      }}
+    ></Route>
   )
 }
 
-export default function BrowserRouter() {
-  return (
-    <Router>
-      <Switch>
-        {routes.map((route, i) => (
-          <RouteWithSubRoutes key={i} {...route} />
-        ))}
-      </Switch>
-    </Router>
-  )
+export default function Routes() {
+  return <Switch>{routes.map((route) => renderRoute(route))}</Switch>
 }

@@ -1,5 +1,5 @@
 import React from 'react'
 
 export default function Sandwiches(props: React.PropsWithChildren<{}>) {
-  return <h1>Tacos{props.children}</h1>
+  return <h1>Donut🍩🍩🍩{props.children}</h1>
 }

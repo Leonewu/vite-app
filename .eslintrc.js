@@ -29,6 +29,7 @@ module.exports = {
     "react/prop-types": ['off'],
     "indent": ["off"],
     "no-extra-parens": ["off"],
-    "no-tabs": ["off"]
+    "no-tabs": ["off"],
+    "eol-last": ["off"]
   }
 }
