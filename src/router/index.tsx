@@ -21,18 +21,20 @@ function renderRoute(route: RouteItem) {
           }
           return <Redirect to={route.redirect} />
         }
-        const Component = route.component || React.Fragment
         if (route.children?.length) {
           const children = route.children.map((child) => {
             return renderRoute({ ...child, _parentPath: fullpath })
           })
+          if (!route.component) {
+            return <Switch>{children}</Switch>
+          }
           return (
-            <Component {...props}>
+            <route.component {...props}>
               <Switch>{children}</Switch>
-            </Component>
+            </route.component>
           )
         }
-        return <Component {...props} />
+        return route.component ? <route.component {...props} /> : null
       }}
     ></Route>
   )

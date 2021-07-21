@@ -45,20 +45,23 @@ export default () => {
 
   function renderSiderMenu(item: RouteItem, parentPath?: string) {
     if (!item.path || item.path === '/' || item.path === '*') return null
+    const Logo = item.logo ? <item.logo /> : null
+    const fullpath = `${parentPath || ''}${item.path}`
     if (item.children) {
       const children = (item.children || []).map((child) =>
         renderSiderMenu(child, `${parentPath || ''}${item.path}`)
       )
       return (
-        <Menu.SubMenu key={item.path} title={item.name}>
+        <Menu.SubMenu key={fullpath} title={item.name} icon={Logo}>
           {children}
         </Menu.SubMenu>
       )
     }
     return (
       <Menu.Item
-        key={item.path}
-        onClick={() => history.push(`${parentPath || ''}${item.path}`)}
+        key={fullpath}
+        icon={Logo}
+        onClick={() => history.push(fullpath)}
       >
         {item.name}
       </Menu.Item>
@@ -70,7 +73,7 @@ export default () => {
       <Layout.Header>header</Layout.Header>
       <Layout>
         {!hideSider && (
-          <Layout.Sider className={styles.sider}>
+          <Layout.Sider className={styles.sider} collapsible>
             <Menu mode="inline">
               {routes.map((route) => renderSiderMenu(route))}
             </Menu>

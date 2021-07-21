@@ -1,11 +1,12 @@
 import type { RouteProps } from 'react-router-dom'
 import NotFound from '@/layout/404'
 import ramen from './modules/ramen'
-import perfScreen from './modules/perf-screen'
 import pizza from './modules/pizza'
 import donut from './modules/donut'
+import vue from './modules/vue'
+import react from './modules/react'
 
-const modules = [...pizza, ...donut, ...ramen, ...perfScreen]
+const modules = [...pizza, ...donut, ...ramen, ...react, ...vue]
 export interface RouteItem extends RouteProps {
   /** if needs hide sider, set it false. default true */
   sider?: boolean
@@ -28,6 +29,7 @@ export interface RouteItem extends RouteProps {
    * @notice It is a fullpath, not a relative path.
    * */
   redirect?: `/${string}`
+  logo?: React.FunctionComponent
 }
 
 export const routes: RouteItem[] = [

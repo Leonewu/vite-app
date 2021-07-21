@@ -25,6 +25,7 @@
 }
 
 .notify {
+  width: 600px !important;
   max-height: 800px;
   overflow-y: auto !important;
   /* &::-webkit-scrollbar {
