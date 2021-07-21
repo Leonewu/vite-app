@@ -44,7 +44,7 @@ export default () => {
   }
 
   function renderSiderMenu(item: RouteType, parentPath?: string) {
-    if (!item.path) return null
+    if (!item.path || item.path === '/') return null
     if (item.children) {
       const children = (item.children || []).map((child) =>
         renderSiderMenu(child, `${parentPath || ''}${item.path}`)

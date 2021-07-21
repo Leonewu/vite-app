@@ -8,37 +8,47 @@ const PerfScreen = loadable(() => import('@/pages/perf-screen'))
 const Child = loadable(() => import('@/pages/Donut/child'))
 
 export interface RouteType extends RouteProps {
-  /** if needs hide sider, set it false */
+  /** if needs hide sider, set it false. default true */
   sider?: boolean
-  /** if needs hide layout, set it false */
+  /** if needs hide layout, set it false. default true */
   layout?: boolean
-  /** if needs hide header, set it false */
+  /** if needs hide header, set it false. default true */
   header?: boolean
   /** auth code  */
   auth?: string[]
   children?: RouteType[]
   /**
-   * @describtion path should be start with '/'
+   * @describtion path should start with '/'
    * */
   path?: `/${string}`
+  /** internal attribute */
   _parentPath?: string
   name?: string
+  /**
+   * @description redirect url
+   * @notice It is a fullpath, not a relative path.
+   * */
+  redirect?: `/${string}`
 }
 
 export const routes: RouteType[] = [
+  {
+    path: '/',
+    redirect: '/donut',
+  },
   {
     name: 'pizza🍕',
     path: '/pizza',
     component: Ramen,
   },
   {
-    name: 'onigiri🍙',
+    name: 'onigiri🍙(without layout)',
     path: '/onigiri',
     layout: false,
     component: Ramen,
   },
   {
-    name: 'ramen🍜',
+    name: 'ramen🍜(without sider)',
     path: '/ramen',
     sider: false,
     component: Ramen,

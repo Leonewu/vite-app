@@ -1,7 +1,7 @@
 import React from 'react'
-import { routes } from './routes'
+import { routes, flatRoutes } from './routes'
 import type { RouteType } from './routes'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 
 function renderRoute(route: RouteType) {
   const fullpath = route._parentPath
@@ -13,6 +13,14 @@ function renderRoute(route: RouteType) {
       path={fullpath}
       key={fullpath || ''}
       render={(props) => {
+        if (route.redirect) {
+          if (route.component) {
+            console.warn(
+              `route: ${route.path} should't have redirect and component at the same time.Remove one of them`
+            )
+          }
+          return <Redirect to={route.redirect} />
+        }
         const Component = route.component || React.Fragment
         if (route.children?.length) {
           const children = route.children.map((child) => {
