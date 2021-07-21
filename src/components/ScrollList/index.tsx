@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useReducer } from 'react'
 import styles from './index.module.css'
-import { useInterval } from '@/hooks/useInterval'
+import { useInterval, useUnmountRef } from '@/hooks'
 
 declare module 'react' {
   // memo会丢失泛型 memo helper
@@ -23,6 +23,7 @@ const ScrollTable = <T extends Record<string, unknown>>(props: PropType<T>) => {
   const list = useRef<T[]>([])
   const visualList = useRef<T[]>([])
   const scrollTimer = useRef<any>(null)
+  const isUnmount = useUnmountRef()
   const [, forceUpdate] = useReducer((x) => !x, false)
   // 最新的 item
   const newestItem = useRef<T>({} as T)
@@ -42,6 +43,7 @@ const ScrollTable = <T extends Record<string, unknown>>(props: PropType<T>) => {
   const [start, clear] = useInterval(
     () => {
       fetchList(newestItem.current).then((res) => {
+        if (isUnmount.current) return
         list.current = (res || []).concat(list.current)
         if (res.length) {
           // 如果返回的是有值，则更新时间戳
