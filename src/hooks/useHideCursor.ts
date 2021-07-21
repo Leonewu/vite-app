@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import type React from 'react'
+import { useUnmountRef } from './useUnmountRef'
 
 function isDOM(node: any) {
   if (typeof HTMLElement === 'object') {
@@ -53,9 +54,10 @@ export const useHideCursor = (
   wait: number = 10000
 ) => {
   const [isHide, setIsHide] = useState(false)
-
+  const isUnmount = useUnmountRef()
   const hide = useCallback(
     debounce(() => {
+      if (isUnmount.current) return
       setIsHide(true)
     }, wait),
     []
@@ -63,6 +65,7 @@ export const useHideCursor = (
 
   const onMouseMove = useCallback(
     throttle(() => {
+      if (isUnmount.current) return
       setIsHide(false)
       hide()
     }, 1000),
@@ -122,8 +125,10 @@ export const useHideCursor = (
  */
 export const useMouseStop = (wait: number = 10000) => {
   const [isStop, setIsStop] = useState(true)
+  const isUnmount = useUnmountRef()
   const stop = useCallback(
     debounce(() => {
+      if (isUnmount.current) return
       setIsStop(true)
     }, wait),
     []
@@ -132,6 +137,7 @@ export const useMouseStop = (wait: number = 10000) => {
   const onMouseMove = useCallback(
     throttle(
       () => {
+        if (isUnmount.current) return
         setIsStop(false)
         stop()
       },

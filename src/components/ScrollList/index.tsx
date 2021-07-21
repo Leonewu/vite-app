@@ -31,6 +31,7 @@ const ScrollTable = <T extends Record<string, unknown>>(props: PropType<T>) => {
     if (scrollTimer.current) return
     if (!list.current.length) return
     scrollTimer.current = setTimeout(() => {
+      if (isUnmount.current) return
       visualList.current = list.current
         .slice(-5)
         .concat(visualList.current.slice(0, 5))
@@ -43,7 +44,7 @@ const ScrollTable = <T extends Record<string, unknown>>(props: PropType<T>) => {
   const [start, clear] = useInterval(
     () => {
       fetchList(newestItem.current).then((res) => {
-        if (isUnmount.current) return
+        // if (isUnmount.current) return
         list.current = (res || []).concat(list.current)
         if (res.length) {
           // 如果返回的是有值，则更新时间戳

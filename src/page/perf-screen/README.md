@@ -32,6 +32,7 @@
    4. 鼠标 15s 不移动后，为对应的 html 元素添加 4 中的类名
 9. 全屏通过 ahook 的 useFullscreen 实现，并不复杂，所以就懒得去踩坑了
 10. 鼠标移动全屏按钮的显隐，**_封装 useMouseStop_**，实现原理和第 8 点类似，也是需要防抖和节流
+11. 由于大量使用定时器，在组件卸载后，定时器的函数如果触发了就会报错。特别是延迟较长的定时器，需要针对组件 unmount 优化
 
 ## 产出 ⚡
 
@@ -41,10 +42,12 @@
 4. Firework 组件
 5. useInterval hook
 6. useHideCursor 和 useMouseStop hook
+7. useUnmountRef hook
 
 ## 总结 🏷
 
 1. 做好定时器的维护
 2. 设计 api 时，尽量简单明了，一目了然，多参考 antd 的 api 设计和命名
+3. 由于定时器较多，所以要注意组件 unmount 之后，定时器触发的函数需要 return
 
 以上组件在 src/components 目录下可找到

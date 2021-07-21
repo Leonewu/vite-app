@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react'
 import { Carousel } from 'antd'
-import { useInterval } from '@/hooks/useInterval'
+import { useInterval, useUnmountRef } from '@/hooks'
 import styles from './index.module.css'
 
 /* XXX table-layout: fixed 即不用默认布局算法渲染（列宽会取内容宽度最大的宽度），默认为 auto */
@@ -67,7 +67,7 @@ const CarouselTable: React.FC<TablePropsType> = React.memo((props) => {
   const totalPage = useMemo(() => {
     return Math.ceil((total || list.length) / pagination.pageSize)
   }, [total, pagination.pageSize, list])
-
+  const isUnmount = useUnmountRef()
   const srollTo = (page: number) => {
     // 滚动到第几页 page 从 1 开始
     // FIXME: 默认第二页时，手动点击第一页动画效果不流畅
@@ -88,6 +88,7 @@ const CarouselTable: React.FC<TablePropsType> = React.memo((props) => {
     // 如果不是自动播放，页码一样就不需要请求
     // 如果是自动播放，页码一样时要请求数据，因为要实时刷新本页数据
     if (!autoplay && current === page) return
+    if (isUnmount.current) return
     try {
       setLoading(true)
       const res = await fetchList?.({ ...pagination, current: page })
