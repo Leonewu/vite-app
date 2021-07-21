@@ -48,6 +48,6 @@
 
 1. 做好定时器的维护
 2. 设计 api 时，尽量简单明了，一目了然，多参考 antd 的 api 设计和命名
-3. 由于定时器较多，所以要注意组件 unmount 之后，定时器触发的函数需要 return
+3. 由于定时器较多，所以要注意组件 unmount 之后，定时器触发的函数需要判断当前组件是否 unmount
 
 以上组件在 [src/components](https://github.com/Leonewu/vite-app/tree/main/src/pages/perf-screen) 目录下可找到
