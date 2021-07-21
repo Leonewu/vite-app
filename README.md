@@ -121,7 +121,7 @@
 
 1. layout，路由封装
     1. 使用 antd 的 Layout
-    2. 路由封装，不用 react-router-config 的原因是手写不麻烦，并且自由
+    2. 路由封装，不用 react-router-config 的原因是手写不麻烦，并且能随意添加配置
         1. 可配置的 layout，sider，header
         2. 衍生出扁平的路由结构，方便配置的搜索
 2. 设置代理

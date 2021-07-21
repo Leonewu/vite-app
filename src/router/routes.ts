@@ -1,11 +1,11 @@
 import type { RouteProps } from 'react-router-dom'
 import loadable from '@loadable/component'
-import Ramen from '@/page/Ramen'
+import Ramen from '@/pages/Ramen'
 import NotFound from '@/layout/404'
 
-const Donut = loadable(() => import('@/page/Donut'))
-const PerfScreen = loadable(() => import('@/page/perf-screen'))
-const Child = loadable(() => import('@/page/Donut/child'))
+const Donut = loadable(() => import('@/pages/Donut'))
+const PerfScreen = loadable(() => import('@/pages/perf-screen'))
+const Child = loadable(() => import('@/pages/Donut/child'))
 
 export interface RouteType extends RouteProps {
   /** if needs hide sider, set it false */

@@ -1,9 +1,9 @@
 import React, { Children, useMemo, useState } from 'react'
 import { Layout, Menu } from 'antd'
 import styles from './index.module.css'
-import { flatRoutes, routes } from '@/routes/routes'
-import type { RouteType } from '@/routes/routes'
-import Router from '@/routes/'
+import { flatRoutes, routes } from '@/router/routes'
+import type { RouteType } from '@/router/routes'
+import Router from '@/router'
 import { useLocation, useHistory } from 'react-router-dom'
 
 export default () => {
