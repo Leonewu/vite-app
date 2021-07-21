@@ -1,8 +1,8 @@
-import React, { Children, useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import { Layout, Menu } from 'antd'
 import styles from './index.module.css'
 import { flatRoutes, routes } from '@/router/routes'
-import type { RouteType } from '@/router/routes'
+import type { RouteItem } from '@/router/routes'
 import Router from '@/router'
 import { useLocation, useHistory } from 'react-router-dom'
 
@@ -43,8 +43,8 @@ export default () => {
     return <Router />
   }
 
-  function renderSiderMenu(item: RouteType, parentPath?: string) {
-    if (!item.path || item.path === '/') return null
+  function renderSiderMenu(item: RouteItem, parentPath?: string) {
+    if (!item.path || item.path === '/' || item.path === '*') return null
     if (item.children) {
       const children = (item.children || []).map((child) =>
         renderSiderMenu(child, `${parentPath || ''}${item.path}`)

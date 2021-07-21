@@ -1,13 +1,12 @@
 import type { RouteProps } from 'react-router-dom'
-import loadable from '@loadable/component'
-import Ramen from '@/pages/Ramen'
 import NotFound from '@/layout/404'
+import ramen from './modules/ramen'
+import perfScreen from './modules/perf-screen'
+import pizza from './modules/pizza'
+import donut from './modules/donut'
 
-const Donut = loadable(() => import('@/pages/Donut'))
-const PerfScreen = loadable(() => import('@/pages/perf-screen'))
-const Child = loadable(() => import('@/pages/Donut/child'))
-
-export interface RouteType extends RouteProps {
+const modules = [...pizza, ...donut, ...ramen, ...perfScreen]
+export interface RouteItem extends RouteProps {
   /** if needs hide sider, set it false. default true */
   sider?: boolean
   /** if needs hide layout, set it false. default true */
@@ -16,11 +15,11 @@ export interface RouteType extends RouteProps {
   header?: boolean
   /** auth code  */
   auth?: string[]
-  children?: RouteType[]
+  children?: RouteItem[]
   /**
    * @describtion path should start with '/'
    * */
-  path?: `/${string}`
+  path?: `/${string}` | '*'
   /** internal attribute */
   _parentPath?: string
   name?: string
@@ -31,62 +30,28 @@ export interface RouteType extends RouteProps {
   redirect?: `/${string}`
 }
 
-export const routes: RouteType[] = [
+export const routes: RouteItem[] = [
   {
     path: '/',
     redirect: '/donut',
   },
+  ...modules,
   {
-    name: 'pizza🍕',
-    path: '/pizza',
-    component: Ramen,
-  },
-  {
-    name: 'onigiri🍙(without layout)',
-    path: '/onigiri',
-    layout: false,
-    component: Ramen,
-  },
-  {
-    name: 'ramen🍜(without sider)',
-    path: '/ramen',
-    sider: false,
-    component: Ramen,
-  },
-  {
-    name: 'donut🍩',
-    path: '/donut',
-    component: Donut,
-    auth: [],
-    children: [
-      {
-        name: 'donut-child',
-        path: '/donut-child',
-        component: Child,
-      },
-    ],
-  },
-  {
-    name: 'perf-screen',
-    path: '/perf-screen',
-    component: PerfScreen,
-    layout: false,
-  },
-  {
+    path: '*',
     component: NotFound,
   },
 ]
 
-export type FlatRouteType = RouteType & {
+export type FlatRouteItem = RouteItem & {
   /** 全路径，绝对路径 */
   fullpath?: string
   /** 父级路由 */
-  parent?: FlatRouteType
+  parent?: FlatRouteItem
 }
 function flat(
-  routes: FlatRouteType[],
-  parent?: FlatRouteType
-): FlatRouteType[] {
+  routes: FlatRouteItem[],
+  parent?: FlatRouteItem
+): FlatRouteItem[] {
   /* 拍平并且补上 fullpath 和 parent 属性 */
   return routes.reduce((pre, cur) => {
     const parentPath = parent?.fullpath || ''
@@ -97,7 +62,7 @@ function flat(
       pre.push(...flat(cur.children, route))
     }
     return pre
-  }, [] as FlatRouteType[])
+  }, [] as FlatRouteItem[])
 }
 
 export const flatRoutes = flat(routes)

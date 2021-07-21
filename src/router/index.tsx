@@ -1,9 +1,9 @@
 import React from 'react'
-import { routes, flatRoutes } from './routes'
-import type { RouteType } from './routes'
+import { routes } from './routes'
+import type { RouteItem } from './routes'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-function renderRoute(route: RouteType) {
+function renderRoute(route: RouteItem) {
   const fullpath = route._parentPath
     ? `${route._parentPath}${route.path}`
     : route.path

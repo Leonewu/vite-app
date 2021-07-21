@@ -30,6 +30,7 @@ module.exports = {
     "indent": ["off"],
     "no-extra-parens": ["off"],
     "no-tabs": ["off"],
-    "eol-last": ["off"]
+    "eol-last": ["off"],
+    "no-undef": ["off"]
   }
 }
