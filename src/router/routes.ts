@@ -5,37 +5,47 @@ import pizza from './modules/pizza'
 import donut from './modules/donut'
 import vue from './modules/vue'
 import react from './modules/react'
+import about from './modules/about'
 
-const modules = [...pizza, ...donut, ...ramen, ...react, ...vue]
+const modules = [...about, ...pizza, ...donut, ...ramen, ...react, ...vue]
 export interface RouteItem extends RouteProps {
+  /** menu name  */
+  name?: string
+  /**
+   * @describtion path should start with '/', or '*'
+   * */
+  path?: `/${string}` | '*'
+  children?: RouteItem[]
+  /** menu icon  */
+  icon?: React.FunctionComponent
+  /** auth code  */
+  auth?: string[]
+  /**
+   * @description redirect url
+   * @notice It is a fullpath, not a relative path.
+   * */
+  redirect?: `/${string}`
   /** if needs hide sider, set it false. default true */
   sider?: boolean
   /** if needs hide layout, set it false. default true */
   layout?: boolean
   /** if needs hide header, set it false. default true */
   header?: boolean
-  /** auth code  */
-  auth?: string[]
-  children?: RouteItem[]
-  /**
-   * @describtion path should start with '/'
-   * */
-  path?: `/${string}` | '*'
+  /** hidden in sider menu, default false  */
+  hide?: boolean
   /** internal attribute */
   _parentPath?: string
-  name?: string
-  /**
-   * @description redirect url
-   * @notice It is a fullpath, not a relative path.
-   * */
-  redirect?: `/${string}`
-  icon?: React.FunctionComponent
 }
 
 export const routes: RouteItem[] = [
   {
     path: '/',
     redirect: '/donut',
+  },
+  {
+    path: '/home',
+    hide: true,
+    redirect: '/pizza',
   },
   ...modules,
   {

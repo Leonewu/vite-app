@@ -45,7 +45,9 @@ export default () => {
   }
 
   function renderSiderMenu(item: RouteItem, parentPath?: string) {
-    if (!item.path || item.path === '/' || item.path === '*') return null
+    if (!item.path || item.path === '/' || item.path === '*' || item.hide) {
+      return null
+    }
     const Icon = item.icon ? <item.icon /> : null
     const fullpath = `${parentPath || ''}${item.path}`
     if (item.children) {

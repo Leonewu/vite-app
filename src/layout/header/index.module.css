@@ -24,9 +24,6 @@
 .nav {
   margin-left: auto;
   display: flex;
-  color: #2c3e50;
-  font-weight: 500;
-  font-size: 14px;
 }
 .navItem {
   display: flex;
@@ -34,7 +31,12 @@
   cursor: pointer;
   position: relative;
   padding: 4px 2px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color ease 0.2s;
   &:hover {
+    color: var(--highlight-text);
     &::after {
       transform: scale(1);
     }
@@ -51,7 +53,8 @@
     transition: transform ease 0.2s;
   }
   & > svg {
-    color: #90a4b7;
+    /* color: #90a4b7; */
+    color: var(--highlight-text);
     margin-left: 2px;
   }
   & + .navItem {
