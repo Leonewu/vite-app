@@ -5,6 +5,7 @@ import { flatRoutes, routes } from '@/router/routes'
 import type { RouteItem } from '@/router/routes'
 import Router from '@/router'
 import { useLocation, useHistory } from 'react-router-dom'
+import Header from './header'
 
 export default () => {
   const location = useLocation()
@@ -70,7 +71,7 @@ export default () => {
 
   return (
     <Layout className={styles.layout}>
-      <Layout.Header>header</Layout.Header>
+      <Header />
       <Layout>
         {!hideSider && (
           <Layout.Sider className={styles.sider} collapsible>

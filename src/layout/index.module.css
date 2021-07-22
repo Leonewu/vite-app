@@ -3,9 +3,32 @@
   min-height: 100vh !important;
   background: rgba(255, 255, 255, 0.3);
 }
+
 .sider {
   width: 200px !important;
   background: #fff !important;
+  & :global .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+  & :global .ant-menu-item::after {
+    background-color: var(--highlight-bg) !important;
+  }
+  & :global .ant-menu-vertical .ant-menu-item::after,
+  & :global .ant-menu-vertical-left .ant-menu-item::after,
+  & :global .ant-menu-vertical-right .ant-menu-item::after,
+  & :global .ant-menu-inline .ant-menu-item::after {
+    border-color: var(--hightlight-text) !important;
+  }
+  & :global .ant-menu-item-selected,
+  & :global .ant-menu-submenu-selected,
+  & :global .ant-menu-light .ant-menu-item:hover, 
+  & :global .ant-menu-light .ant-menu-item-active,
+  & :global .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+  & :global .ant-menu-light .ant-menu-submenu-active,
+  & :global .ant-menu-light .ant-menu-submenu-title:hover,
+  & :global .ant-menu-submenu-arrow::before, 
+  & :global .ant-menu-submenu-arrow::after {
+    color: var(--highlight-text) !important;
+  }
+
 }
 
 .content {
