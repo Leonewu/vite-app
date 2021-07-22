@@ -8,7 +8,7 @@ const routes: RouteItem[] = [
   {
     name: 'vue',
     path: '/vue',
-    logo: Icon,
+    icon: Icon,
     children: [
       {
         name: 'perf-screen📺',

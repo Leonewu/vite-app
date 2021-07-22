@@ -45,14 +45,14 @@ export default () => {
 
   function renderSiderMenu(item: RouteItem, parentPath?: string) {
     if (!item.path || item.path === '/' || item.path === '*') return null
-    const Logo = item.logo ? <item.logo /> : null
+    const Icon = item.icon ? <item.icon /> : null
     const fullpath = `${parentPath || ''}${item.path}`
     if (item.children) {
       const children = (item.children || []).map((child) =>
         renderSiderMenu(child, `${parentPath || ''}${item.path}`)
       )
       return (
-        <Menu.SubMenu key={fullpath} title={item.name} icon={Logo}>
+        <Menu.SubMenu key={fullpath} title={item.name} icon={Icon}>
           {children}
         </Menu.SubMenu>
       )
@@ -60,7 +60,7 @@ export default () => {
     return (
       <Menu.Item
         key={fullpath}
-        icon={Logo}
+        icon={Icon}
         onClick={() => history.push(fullpath)}
       >
         {item.name}

@@ -29,7 +29,7 @@ export interface RouteItem extends RouteProps {
    * @notice It is a fullpath, not a relative path.
    * */
   redirect?: `/${string}`
-  logo?: React.FunctionComponent
+  icon?: React.FunctionComponent
 }
 
 export const routes: RouteItem[] = [

@@ -8,7 +8,7 @@ const routes: RouteItem[] = [
   {
     name: 'react',
     path: '/react',
-    logo: Icon,
+    icon: Icon,
     children: [
       {
         name: 'perf-screen📺',
