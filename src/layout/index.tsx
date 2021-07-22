@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Layout, Menu } from 'antd'
 import styles from './index.module.css'
 import { flatRoutes, routes } from '@/router/routes'
@@ -10,9 +10,33 @@ import Header from './header'
 export default () => {
   const location = useLocation()
   const history = useHistory()
+
   const currentRoute = useMemo(() => {
     return flatRoutes.find((r) => r.fullpath === location.pathname)
   }, [location])
+
+  const defaultOpenKeys = useMemo(() => {
+    const keys = []
+    let cur = currentRoute
+    while (cur) {
+      if (cur?.fullpath) {
+        keys.unshift(cur.fullpath)
+      }
+      cur = cur.parent
+    }
+    return keys
+  }, [currentRoute])
+
+  const [openKeys, setOpenKeys] = useState<string[]>(defaultOpenKeys)
+  const [selectedKeys, setSelectedKeys] = useState<string[]>()
+
+  useEffect(() => {
+    if (currentRoute?.fullpath) {
+      setSelectedKeys([currentRoute.fullpath])
+    } else {
+      setSelectedKeys([])
+    }
+  }, [currentRoute])
 
   const hideLayout = useMemo(() => {
     let flag = false
@@ -77,7 +101,12 @@ export default () => {
       <Layout>
         {!hideSider && (
           <Layout.Sider className={styles.sider} collapsible>
-            <Menu mode="inline">
+            <Menu
+              mode="inline"
+              openKeys={openKeys}
+              selectedKeys={selectedKeys}
+              onOpenChange={(k) => setOpenKeys(k as string[])}
+            >
               {routes.map((route) => renderSiderMenu(route))}
             </Menu>
           </Layout.Sider>
