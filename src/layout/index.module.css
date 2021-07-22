@@ -8,7 +8,9 @@
   width: 200px !important;
   background: #fff !important;
   & :global .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
-  & :global .ant-menu-item::after {
+  & :global .ant-menu-item::after,
+  & :global .ant-menu-item:active,
+  & :global .ant-menu-submenu-title:active {
     background-color: var(--highlight-bg) !important;
   }
   & :global .ant-menu-vertical .ant-menu-item::after,

@@ -32,7 +32,16 @@
         }
         ```
 
-    3. 装完之后，尝试使用嵌套语法，但此时 vscode可能 会报红，需安装插件 `postCSS Language Support`
+    3. 装完之后，尝试使用嵌套语法，但此时 vscode 依然会报错，需安装插件 `postCSS Language Support`，并配置 .vscode/settings.json
+
+        ```js
+        {
+            "files.associations": {
+                "*.css": "postcss"
+            }
+        }
+        ```
+
 3. 添加 autoprefixer 配置
     1. `npm i autoprefixer -D`
     2. 引入
