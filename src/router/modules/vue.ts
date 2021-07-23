@@ -1,22 +1,13 @@
-import loadable from '@loadable/component'
 import type { RouteItem } from '../routes'
 import { ReactComponent as Icon } from './logo/vue.svg'
-
-const PerfScreen = loadable(() => import('@/pages/perf-screen'))
+import { ReactComponent as Vue } from '@/pages/Vue/index.md'
 
 const routes: RouteItem[] = [
   {
     name: 'vue',
     path: '/vue',
     icon: Icon,
-    children: [
-      {
-        name: 'perf-screen📺',
-        path: '/perf-screen',
-        component: PerfScreen,
-        layout: false,
-      },
-    ],
+    component: Vue,
   },
 ]
 
