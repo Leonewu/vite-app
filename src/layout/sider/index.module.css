@@ -1,6 +1,5 @@
 .sider {
   width: 200px !important;
-  background: #fff !important;
   & :global .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
   & :global .ant-menu-item::after,
   & :global .ant-menu-item:active,
@@ -24,9 +23,6 @@
   & :global .ant-menu-submenu-arrow::after,
   & :global .ant-menu-submenu-title:hover {
     color: var(--highlight-text) !important;
-  }
-  & :global .ant-layout-sider-trigger {
-    background: #fff !important;
   }
   & :global .ant-layout-sider-trigger {
     color: var(--highlight-text) !important;

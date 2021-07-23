@@ -26,7 +26,8 @@ export default React.memo(() => {
     <header className={styles.header}>
       <div className={styles.title}>
         <img src={avatar} alt="" />
-        <span>Leone&#39;s website</span>
+        {/* <span>Leone&#39;s website</span> */}
+        <span>👋 Hi there!</span>
       </div>
       <nav className={styles.nav}>
         {navs.map((nav) => {

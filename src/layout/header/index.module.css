@@ -1,10 +1,11 @@
 .header {
-  background: #fff;
+  background: var(--section-bg);
   height: 64px;
   padding: 5px 30px 5px 20px;
   display: flex;
   align-items: center;
   box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+  z-index: 2;
 }
 
 .title {
@@ -53,7 +54,6 @@
     transition: transform ease 0.2s;
   }
   & > svg {
-    /* color: #90a4b7; */
     color: var(--highlight-text);
     margin-left: 2px;
   }

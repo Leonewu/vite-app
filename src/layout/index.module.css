@@ -1,10 +1,17 @@
 .layout {
   min-width: 100vw;
   min-height: 100vh !important;
-  background: rgba(255, 255, 255, 0.3);
+  background: url('./bg.png') !important;
+  & :global .ant-layout,
+  & :global .ant-layout-sider,
+  & :global .ant-layout-sider .ant-menu,
+  & :global .ant-layout-sider-trigger {
+    background: var(--section-bg) !important;
+  }
+  & :global .ant-layout-sider .ant-menu {
+    border-right-color: var(--section-bg) !important;
+  }
 }
-
 .content {
   margin: 0;
-  background: #fff;
 }
