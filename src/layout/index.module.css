@@ -2,6 +2,7 @@
   min-width: 100vw;
   min-height: 100vh !important;
   background: url('./bg.png') !important;
+  background-color: #fff;
   & :global .ant-layout,
   & :global .ant-layout-sider,
   & :global .ant-layout-sider .ant-menu,

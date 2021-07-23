@@ -4,5 +4,7 @@
   /* #f5effc */
   /* #f4fcf9 #ade096*/
   /* #fbfaf1 #cfb776*/
+  
+  /* set #fff to turn off the transparent theme */
   --section-bg: transparent;
 }
