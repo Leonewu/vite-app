@@ -39,7 +39,7 @@ export interface RouteItem extends RouteProps {
 export const routes: RouteItem[] = [
   {
     path: '/',
-    redirect: '/donut',
+    redirect: '/introduction',
   },
   {
     path: '/home',
