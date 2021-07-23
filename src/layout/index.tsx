@@ -1,16 +1,14 @@
 import React, { useMemo } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 import styles from './index.module.css'
 import { flatRoutes } from '@/router/routes'
-import type { RouteItem } from '@/router/routes'
 import Router from '@/router'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import Header from './header'
 import Sider from './sider'
 
 export default () => {
   const location = useLocation()
-  const history = useHistory()
 
   const currentRoute = useMemo(() => {
     return flatRoutes.find((r) => r.fullpath === location.pathname)
@@ -44,33 +42,6 @@ export default () => {
 
   if (hideLayout) {
     return <Router />
-  }
-
-  function renderSiderMenu(item: RouteItem, parentPath?: string) {
-    if (!item.path || item.path === '/' || item.path === '*' || item.hide) {
-      return null
-    }
-    const Icon = item.icon ? <item.icon /> : null
-    const fullpath = `${parentPath || ''}${item.path}`
-    if (item.children) {
-      const children = (item.children || []).map((child) =>
-        renderSiderMenu(child, `${parentPath || ''}${item.path}`)
-      )
-      return (
-        <Menu.SubMenu key={fullpath} title={item.name} icon={Icon}>
-          {children}
-        </Menu.SubMenu>
-      )
-    }
-    return (
-      <Menu.Item
-        key={fullpath}
-        icon={Icon}
-        onClick={() => history.push(fullpath)}
-      >
-        {item.name}
-      </Menu.Item>
-    )
   }
 
   return (

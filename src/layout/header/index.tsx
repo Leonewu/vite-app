@@ -1,10 +1,10 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import styles from './index.module.css'
 import avatar from './avatar.jpg'
 import { ReactComponent as link } from './link.svg'
 import { useHistory } from 'react-router'
 
-export default () => {
+export default React.memo(() => {
   const history = useHistory()
   const navs = [
     {
@@ -54,4 +54,4 @@ export default () => {
       </nav>
     </header>
   )
-}
+})

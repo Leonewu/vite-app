@@ -5,7 +5,7 @@ import { flatRoutes, routes } from '@/router/routes'
 import type { RouteItem } from '@/router/routes'
 import { useLocation, useHistory } from 'react-router-dom'
 
-export default () => {
+export default React.memo(() => {
   const location = useLocation()
   const history = useHistory()
 
@@ -74,4 +74,4 @@ export default () => {
       </Menu>
     </Layout.Sider>
   )
-}
+})
