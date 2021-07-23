@@ -1,18 +1,22 @@
 .layout {
+  width: 100%;
   height: 100%;
   background-image: url('./bg.png') !important;
   background-size: unset !important;
   background-repeat: no-repeat !important;
   background-color: #fff;
-  & :global .ant-layout,
-  & :global .ant-layout-sider,
-  & :global .ant-layout-sider .ant-menu,
-  & :global .ant-layout-sider-trigger {
-    background: var(--section-bg) !important;
-  }
-  & :global .ant-layout-sider .ant-menu {
-    border-right-color: var(--section-bg) !important;
-  }
+  display: flex;
+  flex-flow: column wrap;
+}
+.section {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  min-height: 0;
+  background: var(--normal-bg);
+  color: var(--normal-text);
+  transition: var(--mode-transition);
 }
 .content {
   width: 100%;

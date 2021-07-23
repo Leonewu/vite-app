@@ -1,37 +1,37 @@
 # 简介
 
 Hello，我是 Leone，一名前端工程师。  
-这是一个用 vite + react + antd 搭建的 CMS 项目，主要用来展示自己过往写过的作品，如 react/vue 组件，技术文章，css/js tricks 等等~
+这是一个用 vite 搭建的 CMS 项目，主要用来展示自己过往写过的作品，如 react/vue 组件，技术文章，css/js tricks 等等~
 
 ## 技术选型
 
-vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热更新速度，上手也足够简单，不再需要过多地关注配置。
+vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热更新速度，上手足够简单，无需过多地关注配置。
 
 ### 工具链
 
-1. typescript
-2. react
-3. ant-design
-   虽然该项目不是 admin 项目，但是还是要用到 menu 之类的组件，自己对 antd 也比较熟练，所以选择 ant-design
-4. css module + postcss-nesting
-   随着 css 的不断迭代，预处理器并没有什么优势了。所以选择 css module + postcss-nesting 来编写样式
-5. commit-hooks，eslint 和 prettier
-6. vite 插件
-   - antd 按需加载 vite-plugin-style-import
-   - svg 使用 vite-plugin-svgr
-   - md 使用 vite-plugin-markdown
-7. CI/CD 使用 vercel 平台
+- typescript
+- react
+- ant-design
+  主要是用到左侧菜单的 menu 组件
+- css module + postcss-nesting
+  随着浏览器对 css 新特性的支持，css 预处理语言并没有太大的优势了。这里用 css module + postcss-nesting 来编写样式
+- commit-hooks，eslint 和 prettier
+- vite 插件
+  - antd 按需加载 vite-plugin-style-import
+  - svg 使用 vite-plugin-svgr
+  - md 使用 vite-plugin-markdown
+- CI/CD 使用 vercel 平台
 
-### 设计相关
+### 界面设计
 
-1. 确定主色调，并衍生出几种颜色
-2. 可能需要画背景图
-3. 图标可以使用多色图标
-4. md 样式设计
+1. 确定光暗主色调，并衍生出几种渐进颜色
+2. 高斯模糊背景图
+3. 图标使用多色图标
+4. md 样式修改
 
 ## 搭建流程
 
-### 基础工具链
+### 基础工具
 
 1. `yarn create vite`，模板下载完成之后，执行 `npm run dev`，如有 esbuild 相关报错，手动执行 `node node_modules/esbuild/install.js`
 2. 安装 postcss-nesting，支持 css 的嵌套语法
@@ -143,11 +143,11 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 
    3. 代码内使用 `import { ReactComponent as Icon } from './icon.svg'`
 
-以上为搭建项目的主要步骤，省略了 vite-env.d.ts，tsconfig，.eslintrc 的配置细节
+以上为搭建项目的主要步骤，期间还可能需要修改 vite-env.d.ts，tsconfig，.eslintrc 的配置，这些细节省略。
 
-### 代码封装
+### 进一步的封装
 
-上面步骤只是工具链相关的搭建，我们还需要进一步对业务进行封装
+上一步只是工具链层面的搭建，我们还需要针对业务进一步封装
 
 1. layout，中心化路由封装
    1. 使用 antd 的 Layout
@@ -155,6 +155,6 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
       1. 可配置的 layout，sider，header
       2. 衍生出扁平的路由结构，方便搜索
       3. 路由懒加载时候需要加 fallback
-2. 设置代理
-3. 登录鉴权
-4. jenkins
+2. ~~设置代理~~
+3. ~~登录鉴权~~
+4. ~~jenkins~~

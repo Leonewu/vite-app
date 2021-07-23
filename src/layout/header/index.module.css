@@ -1,11 +1,13 @@
 .header {
-  background: var(--section-bg);
+  background: var(--normal-bg);
+  transition: var(--mode-transition);
   height: 64px;
   padding: 5px 30px 5px 20px;
   display: flex;
   align-items: center;
   box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
   z-index: 2;
+  width: 100%;
 }
 
 .title {
@@ -16,8 +18,8 @@
   font-size: 24px;
   & > img {
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     margin-right: 20px;
   }
 }
@@ -25,6 +27,7 @@
 .nav {
   margin-left: auto;
   display: flex;
+  align-items: center;
 }
 .navItem {
   display: flex;
@@ -32,10 +35,11 @@
   cursor: pointer;
   position: relative;
   padding: 4px 2px;
-  color: #2c3e50;
+  color: var(--normal-text);
   font-weight: 500;
   font-size: 14px;
   transition: color ease 0.2s;
+  margin-right: 24px;
   &:hover {
     color: var(--highlight-text);
     &::after {
@@ -57,7 +61,15 @@
     color: var(--highlight-text);
     margin-left: 2px;
   }
-  & + .navItem {
-    margin-left: 24px;
+}
+
+.switch {
+  background: var(--highlight-text) !important;
+  &:focus {
+    box-shadow: var(--highlight-shadow) !important;
+  }
+  & :global .ant-switch-inner {
+    display: flex;
+    align-items: center;
   }
 }

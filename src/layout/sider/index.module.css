@@ -1,5 +1,20 @@
 .sider {
   width: 200px !important;
+  background: transparent !important;
+
+  & :global .ant-layout-sider-trigger {
+    background: transparent;
+  }
+
+  & :global .ant-layout-sider-trigger {
+    color: var(--normal-text) !important;
+  }
+  & :global .ant-menu {
+    border-right-color: transparent !important;
+    background: transparent !important;
+    color: var(--normal-text) !important;
+  }
+
   & :global .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
   & :global .ant-menu-item::after,
   & :global .ant-menu-item:active,
@@ -26,6 +41,11 @@
   }
   & :global .ant-layout-sider-trigger {
     color: var(--highlight-text) !important;
+  }
+
+  & :global .ant-menu-item, 
+  & :global .ant-menu-submenu-title {
+    transition: all 0.2s ease-out;
   }
 
 }

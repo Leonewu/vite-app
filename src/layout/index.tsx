@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { Layout } from 'antd'
 import styles from './index.module.css'
 import { flatRoutes } from '@/router/routes'
 import Router from '@/router'
@@ -9,7 +8,6 @@ import Sider from './sider'
 
 export default () => {
   const location = useLocation()
-
   const currentRoute = useMemo(() => {
     return flatRoutes.find((r) => r.fullpath === location.pathname)
   }, [location])
@@ -45,14 +43,14 @@ export default () => {
   }
 
   return (
-    <Layout className={styles.layout}>
+    <div className={styles.layout}>
       <Header />
-      <Layout>
+      <section className={styles.section}>
         {!hideSider && <Sider />}
         <article className={styles.content}>
           <Router />
         </article>
-      </Layout>
-    </Layout>
+      </section>
+    </div>
   )
 }

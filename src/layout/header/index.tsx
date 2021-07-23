@@ -1,11 +1,16 @@
 import React from 'react'
+import { Switch } from 'antd'
 import styles from './index.module.css'
 import avatar from './avatar.jpg'
 import { ReactComponent as link } from './link.svg'
 import { useHistory } from 'react-router'
+import useTheme, { THEME } from '../theme'
+import { ReactComponent as Sun } from './sun.svg'
+import { ReactComponent as Moon } from './moon.svg'
 
 export default React.memo(() => {
   const history = useHistory()
+  const [mode, toggle] = useTheme()
   const navs = [
     {
       name: 'Home',
@@ -52,6 +57,13 @@ export default React.memo(() => {
             </a>
           )
         })}
+        <Switch
+          checkedChildren={<Moon />}
+          unCheckedChildren={<Sun />}
+          checked={mode === THEME.DARK}
+          onClick={toggle}
+          className={styles.switch}
+        />
       </nav>
     </header>
   )

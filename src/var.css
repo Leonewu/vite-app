@@ -1,4 +1,4 @@
-:root {
+.light {
   /* light mode */
   --highlight-text: #7052b7;
   --highlight-bg: #f8f5fd;
@@ -6,11 +6,21 @@
   /* #f4fcf9 #ade096*/
   /* #fbfaf1 #cfb776*/
   /* set #fff to turn off the transparent theme */
-  --section-bg: transparent;
+  --normal-bg: transparent;
+  --normal-text: rgba(0, 0, 0, 0.85);
+  --light-text: #2c3e50;
+  --highlight-shadow: 0 0 0 2px rgb(112 82 183 / 20%);
+}
+.dark {
+  /* dark mode */ 
+  --normal-bg: #030515;
+  --highlight-bg: #180c27;
+  --highlight-text: #fefeff;
+  --normal-text: #bcbfca;
+  --highlight-shadow: 0 0 0 2px rgb(255 255 255 / 20%);
+}
 
-  /* dark mode */
-  /* --section-bg: #182347 */
-  /* --highlight-bg: #04103a */
-  /* --highlight-text: #fefeff*/
-  /* --normal-text: #bcbfca */
+/* toggle dark/light mode transition */
+:root {
+  --mode-transition: color 0.2s ease-out, background 0.2s ease-out; 
 }
