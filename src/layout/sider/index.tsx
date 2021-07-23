@@ -1,12 +1,9 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { Layout, Menu } from 'antd'
 import styles from './index.module.css'
-import { flatRoutes } from '@/router/routes'
+import { flatRoutes, routes } from '@/router/routes'
 import type { RouteItem } from '@/router/routes'
-import Router from '@/router'
 import { useLocation, useHistory } from 'react-router-dom'
-import Header from './header'
-import Sider from './sider'
 
 export default () => {
   const location = useLocation()
@@ -16,35 +13,28 @@ export default () => {
     return flatRoutes.find((r) => r.fullpath === location.pathname)
   }, [location])
 
-  const hideLayout = useMemo(() => {
-    let flag = false
+  const defaultOpenKeys = useMemo(() => {
+    const keys = []
     let cur = currentRoute
     while (cur) {
-      if (cur.layout === false) {
-        flag = true
-        break
+      if (cur?.fullpath) {
+        keys.unshift(cur.fullpath)
       }
       cur = cur.parent
     }
-    return flag
+    return keys
   }, [currentRoute])
 
-  const hideSider = useMemo(() => {
-    let flag = false
-    let cur = currentRoute
-    while (cur) {
-      if (cur.sider === false) {
-        flag = true
-        break
-      }
-      cur = cur.parent
+  const [openKeys, setOpenKeys] = useState<string[]>(defaultOpenKeys)
+  const [selectedKeys, setSelectedKeys] = useState<string[]>()
+
+  useEffect(() => {
+    if (currentRoute?.fullpath) {
+      setSelectedKeys([currentRoute.fullpath])
+    } else {
+      setSelectedKeys([])
     }
-    return flag
   }, [currentRoute])
-
-  if (hideLayout) {
-    return <Router />
-  }
 
   function renderSiderMenu(item: RouteItem, parentPath?: string) {
     if (!item.path || item.path === '/' || item.path === '*' || item.hide) {
@@ -72,18 +62,16 @@ export default () => {
       </Menu.Item>
     )
   }
-
   return (
-    <Layout className={styles.layout}>
-      <Header />
-      <Layout>
-        {!hideSider && <Sider />}
-        <Layout style={{ padding: 24 }}>
-          <Layout.Content className={styles.content}>
-            <Router />
-          </Layout.Content>
-        </Layout>
-      </Layout>
-    </Layout>
+    <Layout.Sider className={styles.sider} collapsible>
+      <Menu
+        mode="inline"
+        openKeys={openKeys}
+        selectedKeys={selectedKeys}
+        onOpenChange={(k) => setOpenKeys(k as string[])}
+      >
+        {routes.map((route) => renderSiderMenu(route))}
+      </Menu>
+    </Layout.Sider>
   )
 }
