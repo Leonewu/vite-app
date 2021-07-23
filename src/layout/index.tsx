@@ -49,11 +49,9 @@ export default () => {
       <Header />
       <Layout>
         {!hideSider && <Sider />}
-        <Layout style={{ padding: 24 }}>
-          <Layout.Content className={styles.content}>
-            <Router />
-          </Layout.Content>
-        </Layout>
+        <article className={styles.content}>
+          <Router />
+        </article>
       </Layout>
     </Layout>
   )

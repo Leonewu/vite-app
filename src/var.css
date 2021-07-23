@@ -1,10 +1,16 @@
 :root {
+  /* light mode */
   --highlight-text: #7052b7;
   --highlight-bg: #f8f5fd;
   /* #f5effc */
   /* #f4fcf9 #ade096*/
   /* #fbfaf1 #cfb776*/
-  
   /* set #fff to turn off the transparent theme */
   --section-bg: transparent;
+
+  /* dark mode */
+  /* --section-bg: #182347 */
+  /* --highlight-bg: #04103a */
+  /* --highlight-text: #fefeff*/
+  /* --normal-text: #bcbfca */
 }

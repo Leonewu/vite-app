@@ -1,7 +1,8 @@
 .layout {
-  min-width: 100vw;
-  min-height: 100vh !important;
-  background: url('./bg.png') !important;
+  height: 100%;
+  background-image: url('./bg.png') !important;
+  background-size: unset !important;
+  background-repeat: no-repeat !important;
   background-color: #fff;
   & :global .ant-layout,
   & :global .ant-layout-sider,
@@ -14,5 +15,8 @@
   }
 }
 .content {
+  width: 100%;
+  overflow-y: auto;
   margin: 0;
+  padding: 24px;
 }

@@ -1,13 +1,12 @@
 import type { RouteProps } from 'react-router-dom'
 import NotFound from '@/layout/404'
-import ramen from './modules/ramen'
-import pizza from './modules/pizza'
-import donut from './modules/donut'
+import introduction from './modules/introdution'
 import vue from './modules/vue'
 import react from './modules/react'
 import about from './modules/about'
+import docs from './modules/docs'
 
-const modules = [...about, ...pizza, ...donut, ...ramen, ...react, ...vue]
+const modules = [...about, ...introduction, ...docs, ...react, ...vue]
 export interface RouteItem extends RouteProps {
   /** menu name  */
   name?: string
@@ -45,7 +44,7 @@ export const routes: RouteItem[] = [
   {
     path: '/home',
     hide: true,
-    redirect: '/pizza',
+    redirect: '/introduction',
   },
   ...modules,
   {
