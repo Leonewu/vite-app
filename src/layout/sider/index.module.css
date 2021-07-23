@@ -15,13 +15,14 @@
   }
   & :global .ant-menu-item-selected,
   & :global .ant-menu-submenu-selected,
-  & :global .ant-menu-light .ant-menu-item:hover, 
-  & :global .ant-menu-light .ant-menu-item-active,
-  & :global .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
-  & :global .ant-menu-light .ant-menu-submenu-active,
-  & :global .ant-menu-light .ant-menu-submenu-title:hover,
+  & :global .ant-menu-item:hover, 
+  & :global .ant-menu-item-active,
+  & :global .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+  & :global .ant-menu-submenu-active,
+  & :global .ant-menu-submenu-title:hover,
   & :global .ant-menu-submenu-arrow::before, 
-  & :global .ant-menu-submenu-arrow::after {
+  & :global .ant-menu-submenu-arrow::after,
+  & :global .ant-menu-submenu-title:hover {
     color: var(--highlight-text) !important;
   }
   & :global .ant-layout-sider-trigger {
@@ -31,4 +32,24 @@
     color: var(--highlight-text) !important;
   }
 
+}
+.submenu {
+  & :global .ant-menu-item-selected,
+  & :global .ant-menu-submenu-selected,
+  & :global .ant-menu-item:hover, 
+  & :global .ant-menu-item-active,
+  & :global .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+  & :global .ant-menu-submenu-active,
+  & :global .ant-menu-submenu-title:hover,
+  & :global .ant-menu-submenu-arrow::before, 
+  & :global .ant-menu-submenu-arrow::after,
+  & :global .ant-menu-submenu-title:hover {
+    color: var(--highlight-text) !important;
+  }
+  & :global .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+  & :global .ant-menu-item::after,
+  & :global .ant-menu-item:active,
+  & :global .ant-menu-submenu-title:active {
+    background-color: var(--highlight-bg) !important;
+  }
 }

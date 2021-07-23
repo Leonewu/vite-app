@@ -47,7 +47,12 @@ export default React.memo(() => {
         renderSiderMenu(child, `${parentPath || ''}${item.path}`)
       )
       return (
-        <Menu.SubMenu key={fullpath} title={item.name} icon={Icon}>
+        <Menu.SubMenu
+          key={fullpath}
+          title={item.name}
+          icon={Icon}
+          popupClassName={styles.submenu}
+        >
           {children}
         </Menu.SubMenu>
       )
