@@ -2,8 +2,9 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import styleImport from 'vite-plugin-style-import'
 import svgr from 'vite-plugin-svgr'
-import md, { Mode } from 'vite-plugin-markdown'
+import hljs from 'highlight.js'
 import path from 'path'
+import md from 'vite-plugin-react-md'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,7 +28,19 @@ export default defineConfig({
     }),
     svgr(),
     md({
-      mode: [Mode.REACT]
-    })
+      markdownIt: {
+        highlight: function (str, lang) {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return '<pre class="language-'+lang+'">' +
+               hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+               '</pre>';
+              // return hljs.highlight(str, { language: lang }).value;
+            } catch (__) {}
+          }
+          return ''; // use external default escaping
+        }
+      }
+    }),
   ],
 })

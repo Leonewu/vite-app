@@ -19,7 +19,7 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 - vite 插件
   - antd 按需加载 vite-plugin-style-import
   - svg 使用 vite-plugin-svgr
-  - md 使用 vite-plugin-markdown
+  - md 使用 vite-plugin-react-md
 - CI/CD 使用 vercel 平台
 
 ### 界面设计
