@@ -7,6 +7,7 @@ import { useHistory } from 'react-router'
 import useTheme, { THEME } from '../theme'
 import { ReactComponent as Sun } from './sun.svg'
 import { ReactComponent as Moon } from './moon.svg'
+import Mode from './mode'
 
 export default React.memo(() => {
   const history = useHistory()
@@ -57,13 +58,14 @@ export default React.memo(() => {
             </a>
           )
         })}
-        <Switch
+        {/* <Switch
           checkedChildren={<Moon />}
           unCheckedChildren={<Sun />}
           checked={mode === THEME.DARK}
           onClick={toggle}
           className={styles.switch}
-        />
+        /> */}
+        <Mode />
       </nav>
     </header>
   )

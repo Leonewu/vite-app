@@ -1,0 +1,72 @@
+
+@keyframes zoomout {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes zoomin {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+.mode {
+  width: 30px;
+  height: 30px;
+  transform-origin: center center;
+  .sunshines {
+  }
+  .line {
+    transform: scale(0);
+  }
+  &.dark {
+    .sunshines {
+      animation: rotate 3s;
+      transform: rotate(0deg);
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+    }
+    .line {
+      animation: zoomin 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+      animation-delay: calc(var(--order) * 100ms);
+    }
+  }
+  &.light {
+    .sunshines {
+      animation: rotate 0.5s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+    }
+    .line {
+      animation: zoomout 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+    }
+  }
+}

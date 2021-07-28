@@ -13,36 +13,54 @@
       overflow: visible;
     }
     
-    @keyframes fadeout {
+    @keyframes zoomout {
       from {
         transform: scale(1);
       }
       to {
         transform: scale(0);
-
       }
     }
-    .moon3 > .mask {
-      /* transform-origin: top right;
-      transform: scale(1);
-      animation: m 2s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards; */
-       /* animation-delay: calc(var(--order) * 200ms); */
-      /* animation-iteration-count: infinite; */
-      animation: fadeout 2s;
+    @keyframes zoomin {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    .night > .mask {
+      animation: zoomout 1s;
       transform-origin: top right;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
     }
-    .moon3 > circle:nth-child(1) {
-      /* animation: fadeout 2s;
-      transform-origin: 145px calc(100% - 150px);
+    .day > .mask {
+      animation: zoomin 1s;
+      transform-origin: top right;
       animation-timing-function: ease;
-      animation-fill-mode: forwards; */
+      animation-fill-mode: forwards;
     }
 
-    @keyframes star {
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(45deg);
+      }
+    }
+
+    @keyframes rotate2 {
       from {
         opacity: 1;
       }
@@ -50,32 +68,35 @@
         opacity: 0;
       }
     }
-    .moon3 > g.star {
-      /* animation: fadeout 2s;
-      transform-origin: 145px calc(100% - 150px);
-      animation-timing-function: ease;
-      animation-fill-mode: forwards; */
-      /* animation: star 2s;
-      animation-fill-mode: forwards;
-      animation-timing-function: ease; */
-
-    }
-    .moon3  g.sunshine {
-      animation: sunshine 2s;
+    .night .line {
+      animation: zoomin 1s;
       animation-fill-mode: forwards;
       animation-timing-function: ease;
+      animation-delay: calc(var(--order) * 100ms);
     }
-    #moon3  g.sunshine { 
+    .day .line {
+      animation: zoomout 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+      /* animation-delay: calc(100ms); */
+    }
+    #sun-moon g.sunshines {
+      transform-origin: center center;
+    }
+    #sun-moon .line { 
       transform-origin: center center;
       transform: scale(0);
     }
-    @keyframes sunshine {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
+    .night g.sunshines {
+      animation: rotate 3s;
+      transform: rotate(0deg);
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
+    }
+    .day g.sunshines {
+      animation: rotate2 0.5s;
+      animation-fill-mode: forwards;
+      animation-timing-function: ease;
     }
   </style>
 </head>
@@ -99,7 +120,17 @@
   <br>
   
   <br>
-  <svg id="moon3" onclick="animate1()" width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg id="sun-moon" onclick="animate1()" width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="sunshines">
+      <path style="--order: 0" class="line" d="M62.1903 210.138C64.1439 208.184 67.3114 208.184 69.265 210.138V210.138C71.2172 212.09 71.2189 215.254 69.2688 217.209L58.5 228L48.0519 238.426C46.0976 240.376 42.933 240.374 40.9808 238.422V238.422C39.0272 236.468 39.0272 233.301 40.9808 231.347L62.1903 210.138Z" fill="#FFCE54"/>
+      <path style="--order: 1" class="line" d="M134 245C134 242.239 136.239 240 139 240V240C141.761 240 144 242.239 144 245V260V275C144 277.761 141.761 280 139 280V280C136.239 280 134 277.761 134 275V245Z" fill="#F6BB42"/>
+      <path style="--order: 2" class="line" d="M210.038 219.28C208.082 217.324 208.082 214.153 210.038 212.197V212.197C211.989 210.245 215.151 210.24 217.109 212.184L228 223L238.335 233.41C240.279 235.368 240.274 238.529 238.322 240.481V240.481C236.366 242.437 233.195 242.437 231.239 240.481L210.038 219.28Z" fill="#FFCE54"/>
+      <path style="--order: 3" class="line" d="M244.905 144.998C242.143 144.998 239.905 142.759 239.905 139.998V139.998C239.905 137.236 242.143 134.998 244.905 134.998H274.905C277.666 134.998 279.905 137.236 279.905 139.998V139.998C279.905 142.759 277.666 144.998 274.905 144.998H244.905Z" fill="#F6BB42"/>
+      <path style="--order: 4" class="line" d="M232.246 41.3296C234.195 39.3808 237.355 39.3808 239.303 41.3296V41.3296C241.258 43.2838 241.252 46.454 239.29 48.4006L217.964 69.5626C216.045 71.4669 212.951 71.4715 211.026 69.5728V69.5728C209.077 67.6505 209.067 64.5091 211.002 62.5736L232.246 41.3296Z" fill="#FFCE54"/>
+      <path style="--order: 5" class="line" d="M134 5C134 2.23858 136.239 0 139 0V0C141.761 0 144 2.23858 144 5V35C144 37.7614 141.761 40 139 40V40C136.239 40 134 37.7614 134 35V5Z" fill="#F6BB42"/>
+      <path style="--order: 6" class="line" d="M40.6133 47.7004C38.6607 45.7478 38.6607 42.5819 40.6133 40.6293C42.5659 38.6767 45.7317 38.6767 47.6844 40.6293L68.8976 61.8425C70.8502 63.7951 70.8502 66.961 68.8976 68.9136C66.9449 70.8662 63.7791 70.8662 61.8265 68.9136L40.6133 47.7004Z" fill="#FFCE54"/>
+      <path style="--order: 7" class="line" d="M5 144.923C2.23858 144.923 0 142.685 0 139.923V139.923C0 137.162 2.23858 134.923 5 134.923H35C37.7614 134.923 40 137.162 40 139.923V139.923C40 142.685 37.7614 144.923 35 144.923H20H5Z" fill="#F6BB42"/>
+    </g>
     <circle cx="140.025" cy="140.117" r="91.9789" fill="#FFCE54"/>
     <g class="mask">
       <circle cx="176.105" cy="120.638" r="81.073" transform="rotate(-179.697 176.105 120.638)" fill="white"/>
@@ -112,38 +143,20 @@
       <circle cx="133.319" cy="165.397" r="4.93201" fill="#48CFAD"/>
       <circle cx="185.598" cy="115.091" r="4.93201" fill="#4A89DC"/>
     </g>
-    <g>
-      <g class="sunshine">
-        <rect x="65.7277" y="206.6" width="10" height="40" rx="5" transform="rotate(45 65.7277 206.6)" fill="#FFCE54"/>
-      </g>
-      <g class="sunshine">
-        <path d="M40.6133 47.7004C38.6607 45.7478 38.6607 42.5819 40.6133 40.6293V40.6293C42.5659 38.6767 45.7317 38.6767 47.6844 40.6293L68.8976 61.8425C70.8502 63.7951 70.8502 66.961 68.8976 68.9136V68.9136C66.9449 70.8662 63.7791 70.8662 61.8265 68.9136L40.6133 47.7004Z" fill="#FFCE54"/>
-      </g> 
-      <g class="sunshine">
-        <rect x="206.496" y="215.738" width="10" height="40" rx="5" transform="rotate(-45 206.496 215.738)" fill="#FFCE54"/>
-      </g> 
-      <g class="sunshine">
-        <rect x="235.775" y="37.8009" width="10" height="40" rx="5" transform="rotate(45 235.775 37.8009)" fill="#FFCE54"/>
-      </g> 
-      <g class="sunshine">
-        <rect x="134" y="240" width="10" height="40" rx="5" fill="#F6BB42"/>
-      </g> 
-      <g class="sunshine">
-        <rect y="144.923" width="10" height="40" rx="5" transform="rotate(-90 0 144.923)" fill="#F6BB42"/>
-      </g> 
-      <g class="sunshine">
-        <rect x="239.905" y="144.998" width="10" height="40" rx="5" transform="rotate(-90 239.905 144.998)" fill="#F6BB42"/>
-      </g> 
-      <g class="sunshine">
-        <rect x="134" width="10" height="40" rx="5" fill="#F6BB42"/>
-      </g> 
-    </g>
   </svg>
     
 </body>
 <script>
+let mode = 0
 function animate1(e) {
-    document.getElementById('moon3').classList.add('moon3')
+  if (mode !== 1) {
+    document.getElementById('sun-moon').classList.add('night')
+    document.getElementById('sun-moon').classList.remove('day')
+  } else {
+    document.getElementById('sun-moon').classList.add('day')
+    document.getElementById('sun-moon').classList.remove('night')
+  }
+  mode = 1 - mode
 }
 </script>
 </html>
