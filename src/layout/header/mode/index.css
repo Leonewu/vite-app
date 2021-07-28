@@ -16,6 +16,23 @@
   }
 }
 
+@keyframes zoomout1 {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes zoomin1 {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(0.7);
+  }
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -38,35 +55,67 @@
   width: 30px;
   height: 30px;
   transform-origin: center center;
-  .sunshines {
+  overflow: visible;
+  cursor: pointer;
+  & .sunshines {
+    transform-origin: center center;
+    transform: rotate(0deg);
   }
-  .line {
+  & .line {
+    transform-origin: center center;
     transform: scale(0);
   }
-  &.dark {
-    .sunshines {
+  & .circle {
+    transform: scale(1);
+    transition: transform ease 1s;
+    transform-origin: center center;
+  }
+  &.light {
+    & .circle {
+      transform: scale(0.6);
+    }
+    & .sunshines {
       animation: rotate 3s;
       transform: rotate(0deg);
       animation-fill-mode: forwards;
       animation-timing-function: ease;
+      & .line {
+        animation: zoomin1 1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+        animation-delay: calc(var(--order) * 100ms);
+      }
     }
-    .line {
-      animation: zoomin 1s;
-      animation-fill-mode: forwards;
+    & .mask {
+      animation: zoomout 1s;
+      transform-origin: top right;
       animation-timing-function: ease;
-      animation-delay: calc(var(--order) * 100ms);
+      animation-fill-mode: forwards;
+      & > .background {
+        fill: var(--normal-bg);
+      }
     }
   }
-  &.light {
-    .sunshines {
-      animation: rotate 0.5s;
+  &.dark {
+    & .sunshines {
+      /* animation: rotate 5s;
       animation-fill-mode: forwards;
-      animation-timing-function: ease;
+      animation-timing-function: ease; */
+      /* animation-delay: calc(2000ms); */
+      & .line {
+        animation: zoomout1 1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease;
+      }
     }
-    .line {
-      animation: zoomout 1s;
-      animation-fill-mode: forwards;
+    & .mask {
+      animation: zoomin 1s;
+      transform-origin: top right;
       animation-timing-function: ease;
+      animation-fill-mode: forwards;
+      & > .background {
+        fill: var(--normal-bg);
+      }
     }
   }
 }
