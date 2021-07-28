@@ -57,6 +57,12 @@
   transform-origin: center center;
   overflow: visible;
   cursor: pointer;
+  margin-left: 20px;
+  &:hover {
+    & .circle {
+      fill: #F6BB42;
+    }
+  }
   & .sunshines {
     transform-origin: center center;
     transform: rotate(0deg);
@@ -67,7 +73,7 @@
   }
   & .circle {
     transform: scale(1);
-    transition: transform ease 1s;
+    transition: transform ease 0.8s;
     transform-origin: center center;
   }
   &.light {
@@ -80,14 +86,14 @@
       animation-fill-mode: forwards;
       animation-timing-function: ease;
       & .line {
-        animation: zoomin1 1s;
+        animation: zoomin1 0.8s;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
         animation-delay: calc(var(--order) * 100ms);
       }
     }
     & .mask {
-      animation: zoomout 1s;
+      animation: zoomout 0.8s;
       transform-origin: top right;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
@@ -103,13 +109,13 @@
       animation-timing-function: ease; */
       /* animation-delay: calc(2000ms); */
       & .line {
-        animation: zoomout1 1s;
+        animation: zoomout1 0.8s;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
       }
     }
     & .mask {
-      animation: zoomin 1s;
+      animation: zoomin 0.8s;
       transform-origin: top right;
       animation-timing-function: ease;
       animation-fill-mode: forwards;

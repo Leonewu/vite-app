@@ -39,7 +39,9 @@
   font-weight: 500;
   font-size: 14px;
   transition: color ease 0.2s;
-  margin-right: 24px;
+  & + .navItem {
+    margin-left: 24px;
+  }
   &:hover {
     color: var(--highlight-text);
     &::after {
