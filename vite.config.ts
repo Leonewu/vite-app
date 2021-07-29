@@ -9,9 +9,7 @@ import md from 'vite-plugin-react-md'
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [
-      { find: '@', replacement: path.resolve(__dirname, 'src') }
-    ]
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
   plugins: [
     reactRefresh(),
@@ -24,7 +22,7 @@ export default defineConfig({
             return `antd/es/${name}/style/css`
           },
         },
-      ]
+      ],
     }),
     svgr(),
     md({
@@ -32,15 +30,20 @@ export default defineConfig({
         highlight: function (str, lang) {
           if (lang && hljs.getLanguage(lang)) {
             try {
-              return '<pre class="language-'+lang+'">' +
-               hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-               '</pre>';
+              return (
+                '<pre class="language-' +
+                lang +
+                '">' +
+                hljs.highlight(str, { language: lang, ignoreIllegals: true })
+                  .value +
+                '</pre>'
+              )
               // return hljs.highlight(str, { language: lang }).value;
             } catch (__) {}
           }
-          return ''; // use external default escaping
-        }
-      }
+          return '' // use external default escaping
+        },
+      },
     }),
   ],
 })

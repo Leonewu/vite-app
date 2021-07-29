@@ -51,10 +51,28 @@
   }
 }
 
+@keyframes rotate2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
 .mode {
   width: 30px;
   height: 30px;
   transform-origin: center center;
+  transform: rotate(0deg);
   overflow: visible;
   cursor: pointer;
   margin-left: 20px;
@@ -89,7 +107,7 @@
         animation: zoomin1 0.8s;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
-        animation-delay: calc(var(--order) * 100ms);
+        /* animation-delay: calc(var(--order) * 100ms); */
       }
     }
     & .mask {
@@ -103,19 +121,20 @@
     }
   }
   &.dark {
+    animation: rotate2 1s;
+    /* transform: rotate(0deg); */
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
     & .sunshines {
-      /* animation: rotate 5s;
-      animation-fill-mode: forwards;
-      animation-timing-function: ease; */
-      /* animation-delay: calc(2000ms); */
       & .line {
-        animation: zoomout1 0.8s;
+        animation: zoomout1 0.5s;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
       }
     }
     & .mask {
-      animation: zoomin 0.8s;
+      animation: zoomin 0.5s;
       transform-origin: top right;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
