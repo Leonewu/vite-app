@@ -30,8 +30,7 @@ export default React.memo(() => {
       <div className={styles.wrapper}>
         <div className={styles.title}>
           <img src={avatar} alt="" />
-          {/* <span>Leone&#39;s website</span> */}
-          <span>👋 Hi there!</span>
+          <span>Leone</span>
         </div>
         <nav className={styles.nav}>
           {navs.map((nav) => {

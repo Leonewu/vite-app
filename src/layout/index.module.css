@@ -7,10 +7,15 @@
   overflow-y: auto;
   left: 0;
   background-image: url('./bg.png');
-  background-size: unset;
   background-repeat: no-repeat;
+  background-size: 100vw 100vh;
   background-color: var(--normal-bg);
   transition: var(--mode-transition);
+}
+@media (max-width: 1920px) {
+  .layout {
+    background-size: 1920px 100vh;
+  }
 }
 .section {
   width: 100%;
