@@ -28,6 +28,7 @@ export default React.memo(() => {
   const [openKeys, setOpenKeys] = useState<string[]>(defaultOpenKeys)
   const [selectedKeys, setSelectedKeys] = useState<string[]>()
   const [collapsed, setCollapsed] = useState(false)
+  const [hitBreakpoint, setHitBreakpoint] = useState(false)
   useEffect(() => {
     if (currentRoute?.fullpath) {
       setSelectedKeys([currentRoute.fullpath])
@@ -82,13 +83,17 @@ export default React.memo(() => {
         }}
       />
       <Layout.Sider
+        breakpoint="sm"
         width={WIDTH}
         collapsedWidth={CALLAPSED_WIDTH}
         className={styles.sider}
-        collapsible
+        collapsible={!hitBreakpoint}
         collapsed={collapsed}
         onCollapse={(c) => {
           setCollapsed(c)
+        }}
+        onBreakpoint={(broken) => {
+          setHitBreakpoint(broken)
         }}
       >
         <Menu
