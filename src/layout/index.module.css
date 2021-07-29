@@ -5,6 +5,7 @@
   position: absolute;
   top: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   left: 0;
   background-image: url('./bg.png');
   background-repeat: no-repeat;
