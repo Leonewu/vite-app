@@ -10,6 +10,8 @@
   --normal-text: rgba(0, 0, 0, 0.85);
   --light-text: #2c3e50;
   --highlight-shadow: 0 0 0 2px rgb(112 82 183 / 20%);
+  --scrollbar-track: #f0e7f5;
+  --scrollbar-thumb: #c4c2cc;
 }
 .dark {
   /* dark mode */ 
@@ -18,6 +20,8 @@
   --highlight-text: #fefeff;
   --normal-text: #bcbfca;
   --highlight-shadow: 0 0 0 2px rgb(255 255 255 / 20%);
+  --scrollbar-track: var(--normal-bg);
+  --scrollbar-thumb: #4b4e5f;
 }
 
 /* toggle dark/light mode transition */
