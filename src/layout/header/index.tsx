@@ -23,6 +23,7 @@ export default React.memo(() => {
       newTab: true,
     },
   ]
+  // 为了更加流畅地切换主题，多加了个元素当背景
   return (
     <header className={styles.header}>
       <div className={styles.bg} />

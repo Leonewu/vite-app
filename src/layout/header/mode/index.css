@@ -99,7 +99,7 @@
       transform: scale(0.6);
     }
     & .sunshines {
-      animation: rotate 1s;
+      animation: rotate 1.5s;
       transform: rotate(0deg);
       animation-fill-mode: forwards;
       animation-timing-function: ease;

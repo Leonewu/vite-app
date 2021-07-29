@@ -1,10 +1,16 @@
+
 .layout {
   width: 100%;
   height: 100%;
-  background-image: url('./bg.png') !important;
-  background-size: unset !important;
-  background-repeat: no-repeat !important;
-  background-color: #fff;
+  position: absolute;
+  top: 0;
+  overflow-y: auto;
+  left: 0;
+  background-image: url('./bg.png');
+  background-size: unset;
+  background-repeat: no-repeat;
+  background-color: var(--normal-bg);
+  transition: var(--mode-transition);
 }
 .section {
   width: 100%;
@@ -15,7 +21,6 @@
   background: var(--normal-bg);
   color: var(--normal-text);
   transition: var(--mode-transition);
-  padding-top: 64px;
 }
 .content {
   width: 100%;
