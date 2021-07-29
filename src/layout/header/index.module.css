@@ -1,10 +1,11 @@
 .header {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
   height: 64px;
+  z-index: 2;
 }
 
 .bg {
