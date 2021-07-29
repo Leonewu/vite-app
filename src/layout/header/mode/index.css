@@ -99,12 +99,12 @@
       transform: scale(0.6);
     }
     & .sunshines {
-      animation: rotate 3s;
+      animation: rotate 1s;
       transform: rotate(0deg);
       animation-fill-mode: forwards;
       animation-timing-function: ease;
       & .line {
-        animation: zoomin1 0.8s;
+        animation: zoomin1 0.5s;
         animation-fill-mode: forwards;
         animation-timing-function: ease;
         /* animation-delay: calc(var(--order) * 100ms); */

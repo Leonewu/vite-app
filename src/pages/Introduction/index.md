@@ -28,6 +28,7 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 2. 高斯模糊背景图
 3. 图标使用多色图标
 4. md 样式修改
+5. 设计切换黑暗模式的图标，动画
 
 ## 搭建流程
 
@@ -158,3 +159,7 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 2. ~~设置代理~~
 3. ~~登录鉴权~~
 4. ~~jenkins~~
+
+## 踩过的坑
+
+1. vite-plugin-markdown 这个插件写得有问题，所以干脆自己实现了一个 vite-plugin-react-md
