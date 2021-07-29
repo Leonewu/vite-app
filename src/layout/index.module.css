@@ -11,6 +11,8 @@
   background-size: 100vw 100vh;
   background-color: var(--normal-bg);
   transition: var(--mode-transition);
+  display: flex;
+  flex-flow: column wrap;
   &::-webkit-scrollbar {
     width: 10px;
   }
