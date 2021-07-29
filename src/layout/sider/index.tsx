@@ -27,7 +27,7 @@ export default React.memo(() => {
 
   const [openKeys, setOpenKeys] = useState<string[]>(defaultOpenKeys)
   const [selectedKeys, setSelectedKeys] = useState<string[]>()
-
+  const [collapsed, setCollapsed] = useState(false)
   useEffect(() => {
     if (currentRoute?.fullpath) {
       setSelectedKeys([currentRoute.fullpath])
@@ -67,16 +67,39 @@ export default React.memo(() => {
       </Menu.Item>
     )
   }
+  const CALLAPSED_WIDTH = 80
+  const WIDTH = 200
+  const width = collapsed ? CALLAPSED_WIDTH : WIDTH
   return (
-    <Layout.Sider className={styles.sider} collapsible>
-      <Menu
-        mode="inline"
-        openKeys={openKeys}
-        selectedKeys={selectedKeys}
-        onOpenChange={(k) => setOpenKeys(k as string[])}
+    <>
+      <div
+        style={{
+          transition: 'all 0.3s cubic-bezier(0.2, 0, 0, 1) 0s',
+          width: `${width}px`,
+          minWidth: `${width}px`,
+          maxWidth: `${width}px`,
+          // flex: `0 0 ${width}px`
+        }}
+      />
+      <Layout.Sider
+        width={WIDTH}
+        collapsedWidth={CALLAPSED_WIDTH}
+        className={styles.sider}
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(c) => {
+          setCollapsed(c)
+        }}
       >
-        {routes.map((route) => renderSiderMenu(route))}
-      </Menu>
-    </Layout.Sider>
+        <Menu
+          mode="inline"
+          openKeys={openKeys}
+          selectedKeys={selectedKeys}
+          onOpenChange={(k) => setOpenKeys(k as string[])}
+        >
+          {routes.map((route) => renderSiderMenu(route))}
+        </Menu>
+      </Layout.Sider>
+    </>
   )
 })

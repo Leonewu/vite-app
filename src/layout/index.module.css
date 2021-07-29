@@ -5,8 +5,6 @@
   background-size: unset !important;
   background-repeat: no-repeat !important;
   background-color: #fff;
-  display: flex;
-  flex-flow: column wrap;
 }
 .section {
   width: 100%;
@@ -17,6 +15,7 @@
   background: var(--normal-bg);
   color: var(--normal-text);
   transition: var(--mode-transition);
+  padding-top: 64px;
 }
 .content {
   width: 100%;

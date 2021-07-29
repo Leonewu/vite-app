@@ -1,13 +1,29 @@
 .header {
-  background: var(--normal-bg);
-  transition: var(--mode-transition);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url('src/layout/bg.png');
+  z-index: -1;
+}
+
+.wrapper {
   height: 64px;
   padding: 5px 30px 5px 20px;
   display: flex;
   align-items: center;
-  box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
   z-index: 2;
-  width: 100%;
+  background: var(--normal-bg);
+  transition: var(--mode-transition);
 }
 
 .title {
@@ -62,16 +78,5 @@
   & > svg {
     color: var(--highlight-text);
     margin-left: 2px;
-  }
-}
-
-.switch {
-  background: var(--highlight-text) !important;
-  &:focus {
-    box-shadow: var(--highlight-shadow) !important;
-  }
-  & :global .ant-switch-inner {
-    display: flex;
-    align-items: center;
   }
 }

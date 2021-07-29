@@ -1,7 +1,9 @@
 .sider {
   width: 200px !important;
   background: transparent !important;
-
+  position: fixed !important;
+  top: 64px;
+  left: 0;
   & :global .ant-layout-sider-trigger {
     background: transparent;
   }
