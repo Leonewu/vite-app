@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import styles from './index.module.css'
 import { flatRoutes } from '@/router/routes'
 import Router from '@/router'
@@ -37,6 +37,17 @@ export default () => {
     }
     return flag
   }, [currentRoute])
+
+  useEffect(() => {
+    if (!hideLayout) {
+      document.body.classList.add(styles.bg)
+    } else {
+      document.body.classList.remove(styles.bg)
+    }
+    return () => {
+      document.body.classList.remove(styles.bg)
+    }
+  }, [hideLayout])
 
   if (hideLayout) {
     return <Router />
