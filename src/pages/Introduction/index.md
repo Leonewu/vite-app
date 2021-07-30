@@ -34,7 +34,8 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 
 ### 基础工具
 
-1. `yarn create vite`，模板下载完成之后，执行 `npm run dev`，如有 esbuild 相关报错，手动执行 `node node_modules/esbuild/install.js`
+1. `yarn create vite`，创建模板
+   - 执行 `npm run dev`，如有 esbuild 相关报错，手动执行 `node node_modules/esbuild/install.js`
 2. 安装 postcss-nesting，支持 css 的嵌套语法
 
    1. `npm i postcss-nesting -D`
@@ -110,8 +111,12 @@ vite 是一个 bundleless 编译工具。选择 vite 主要原因是超快的热
 
 7. 安装基础依赖
 
-   1. `npm i react-router-dom antd`, `npm i @types/react-router-dom -D`
-   2. 安装动态路由相关依赖 `npm i @loadable/component`, `npm i @types/loadable__component -D`
+   1. react-router
+      - `npm i react-router-dom antd`
+      - `npm i @types/react-router-dom -D`
+   2. 安装动态路由相关依赖
+      - `npm i @loadable/component`
+      - `npm i @types/loadable__component -D`
    3. 配置动态路由，并验证能否动态加载
    4. antd 的按需引入 `npm i vite-plugin-style-import -D`，并加上 vite.config.ts 配置
 
