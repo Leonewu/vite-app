@@ -87,7 +87,7 @@ export default React.memo(() => {
         width={WIDTH}
         collapsedWidth={CALLAPSED_WIDTH}
         className={styles.sider}
-        collapsible={!hitBreakpoint}
+        collapsible={true}
         collapsed={collapsed}
         onCollapse={(c) => {
           setCollapsed(c)
