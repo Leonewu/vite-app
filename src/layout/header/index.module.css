@@ -14,7 +14,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: url('src/layout/bg.png');
+  background: url('@/layout/bg.png');
   z-index: -1;
   /* responsive to the layout bg */
   background-size: 100vw 100vh;
