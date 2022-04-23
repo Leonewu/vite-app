@@ -2,7 +2,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc ./index.ts && tsc && vite build",
     "serve": "vite preview",
     "prepare": "husky install"
   },
@@ -11,6 +11,7 @@
     "@loadable/component": "^5.15.0",
     "ahooks": "^2.10.8",
     "antd": "^4.16.7",
+    "express": "^4.17.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-joyride": "^2.3.0",
